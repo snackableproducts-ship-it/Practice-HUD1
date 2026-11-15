@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "practicehud",
+  "version": "${version}",
+  "name": "Practice HUD",
+  "description": "Client-side HUD and practice utilities: totem/elytra/shield widgets, mace and wind charge trainers, minecart speedometer, throw landing calculator, crosshair designer.",
+  "authors": ["You"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.practicehud.PracticeHudClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
