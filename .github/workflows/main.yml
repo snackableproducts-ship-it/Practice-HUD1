@@ -1,6 +1,32 @@
-git init
-git add .
-git commit -m "Practice HUD"
-git branch -M main
-git remote add origin https://github.com/YOURNAME/practice-hud.git
-git push -u origin main
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 9.2.1
+
+      - name: Build
+        run: gradle build --stacktrace
+
+      - name: Upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: practice-hud
+          path: |
+            build/libs/*.jar
+            !build/libs/*-sources.jar
